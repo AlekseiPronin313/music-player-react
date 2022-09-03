@@ -1,0 +1,5 @@
+.popup__opened {
+    width: 50%;
+    visibility: visible;
+    opacity: 1;
+}
