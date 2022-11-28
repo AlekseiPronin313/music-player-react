@@ -4,6 +4,8 @@ import { ThemeProvider, createTheme} from '@mui/material';
 import './index.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
+import {Provider} from "react-redux";
+import { store } from './redux/redux-store'
 
 const theme = createTheme({
   palette: {
@@ -25,9 +27,11 @@ const theme = createTheme({
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <Provider store={store}>
+        <App />
+        </Provider>
+      </ThemeProvider>
   </React.StrictMode>
 );
 

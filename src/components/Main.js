@@ -1,7 +1,7 @@
 import { Container, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import * as React from "react";
-import TemporaryDrawer from './TemporaryDrawer'
+import TemporaryDrawerContainer from "./TemporaryDrawer/TemporaryDrawContainer";
 
 
 function Main({isOpen}) {
@@ -18,7 +18,7 @@ function Main({isOpen}) {
       <Container>
         <Typography variant="h3">Эквалайзер</Typography>
       </Container>
-      <TemporaryDrawer 
+      <TemporaryDrawerContainer
       isOpen={isOpen}
       />
     </Box>

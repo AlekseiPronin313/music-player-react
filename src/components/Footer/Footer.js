@@ -4,9 +4,8 @@ import SkipNextSharpIcon from "@mui/icons-material/SkipNextSharp";
 import { IconButton, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import MenuIcon from "@mui/icons-material/Menu";
-import img from "../img/da.jpg";
 
-function Footer({ drawerOpen }) {
+function Footer({ openPlaylist }) {
   return (
     <Box
       sx={{
@@ -46,8 +45,8 @@ function Footer({ drawerOpen }) {
             bgcolor: "#000000",
           }}
         >
-          <img className="audio__img" src={img}></img>
-          <Box 
+          {/* <img className="audio__img"></img> */}
+          <Box
           sx={{
             display: 'flex',
             flexDirection: 'column',
@@ -68,7 +67,7 @@ function Footer({ drawerOpen }) {
         <IconButton
           color="primary"
           aria-label="open drawer"
-          onClick={drawerOpen}
+          onClick={openPlaylist}
         >
           <MenuIcon />
         </IconButton>

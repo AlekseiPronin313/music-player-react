@@ -1,4 +1,6 @@
 .popup {
     width: 0;
+    height: 0;
     opacity: 0;
+    background: rgb(51%, 49%, 49%);
 }
