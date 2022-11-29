@@ -1,8 +1,10 @@
-import {combineReducers, createStore} from 'redux'
+import { configureStore } from '@reduxjs/toolkit'
 import stateReducer from "./stateReducer";
 
-const reducers = combineReducers({
-    data: stateReducer
+export default configureStore({
+    reducer: {
+        data: stateReducer
+    },
 })
 
-export const store = createStore(reducers)
+
