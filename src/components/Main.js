@@ -4,7 +4,7 @@ import * as React from "react";
 import TemporaryDrawerContainer from "./TemporaryDrawer/TemporaryDrawContainer";
 
 
-function Main({isOpen}) {
+function Main() {
   return (
     <Box
       sx={{
@@ -18,9 +18,7 @@ function Main({isOpen}) {
       <Container>
         <Typography variant="h3">Эквалайзер</Typography>
       </Container>
-      <TemporaryDrawerContainer
-      isOpen={isOpen}
-      />
+      <TemporaryDrawerContainer/>
     </Box>
   );
 }

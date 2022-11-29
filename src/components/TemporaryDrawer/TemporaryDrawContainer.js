@@ -7,16 +7,15 @@ import {useEffect} from "react";
 function TemporaryDrawerContainer() {
     const dispatch = useDispatch()
 
+    const songs = useSelector(state => state.data.audio)
+    const isOpen = useSelector(state => state.data.isOpenPlaylist)
+
     useEffect(() => {
         dispatch(setSongs())
-    }, [])
-
-    const songs = useSelector(state => state.state.audio)
-    const isOpen = useSelector(state => state.state.isOpenPlaylist)
-
+    },[])
     {
       if (songs)  return (
-            <TemporaryDrawer songs={songs} isOpen={isOpen}/>
+            <TemporaryDrawer songs={songs} isOpen={isOpen} />
         )
     }
 }
