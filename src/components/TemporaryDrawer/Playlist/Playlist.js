@@ -1,14 +1,19 @@
-import {Box} from "@mui/material";
+import {Box, IconButton} from "@mui/material";
 import * as React from "react";
 import {CardMedia, Typography} from "@mui/material";
 import FavoriteBorderSharpIcon from "@mui/icons-material/FavoriteBorderSharp";
 import FavoriteSharpIcon from "@mui/icons-material/FavoriteSharp";
-import {useDispatch} from "react-redux";
-import {isLikes} from "../../../redux/stateReducer";
+import {useDispatch, useSelector} from "react-redux";
+import {isLikes, playAudio} from "../../../redux/stateReducer";
+import PauseCircleIcon from "@mui/icons-material/PauseCircle";
+import PlayArrowSharpIcon from "@mui/icons-material/PlayArrowSharp";
 
 
 function Playlist({props}) {
     const dispatch = useDispatch()
+    // const musicPlay = useSelector(state => state.data.activeButtonPlay)
+    // console.log(musicPlay)
+    const onClickPlay = () => dispatch(playAudio(props.id))
     return (
         <li className="playList__box">
             <Box
@@ -17,12 +22,29 @@ function Playlist({props}) {
                     alignItems: "center",
                 }}
             >
-                <CardMedia
-                    className="audio__img"
-                    component="img"
-                    image={props.img}
-                    alt="image"
-                ></CardMedia>
+                <Box className='playList__music-box' onClick={onClickPlay}>
+                    <CardMedia
+                        className="audio__img"
+                        component="img"
+                        image={props.img}
+                        alt="image"
+                    >
+                    </CardMedia>
+                    <Box className='playList__button-music'>
+                        {/*{*/}
+                        {/*    musicPlay*/}
+                        {/*        ? <IconButton className='playList__button-play' aria-label="pause music">*/}
+                        {/*            <PauseCircleIcon sx={{*/}
+                        {/*                color: "#d5d4d4"*/}
+                        {/*            }} fontSize="large"/>*/}
+                        {/*        </IconButton>*/}
+                        {/*        : <IconButton className='playList__button-pause' aria-label="play music">*/}
+                        {/*            <PlayArrowSharpIcon color="primary" fontSize="large"/>*/}
+                        {/*        </IconButton>*/}
+                        {/*}*/}
+                    </Box>
+                </Box>
+
                 <Box
                     sx={{
                         display: "flex",

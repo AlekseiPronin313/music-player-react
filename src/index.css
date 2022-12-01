@@ -7,3 +7,5 @@
 @import url(./blocks/playList/__artistName/playList__artistName.css);
 @import url(./blocks/playList/__box/playList__box.css);
 @import url(./blocks/playList/__button/playList__button.css);
+@import url(./blocks/playList/__button-music/playList__button-music.css);
+@import url(./blocks/playList/__music-box/playList__music-box.css);

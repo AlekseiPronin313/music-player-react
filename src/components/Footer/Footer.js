@@ -1,11 +1,13 @@
 import * as React from "react";
 import PlayArrowSharpIcon from "@mui/icons-material/PlayArrowSharp";
 import SkipNextSharpIcon from "@mui/icons-material/SkipNextSharp";
-import { IconButton, Typography } from "@mui/material";
+import {CardMedia, IconButton, Typography} from "@mui/material";
 import Box from "@mui/material/Box";
 import MenuIcon from "@mui/icons-material/Menu";
+import PauseCircleIcon from '@mui/icons-material/PauseCircle';
 
-function Footer({ openPlaylist }) {
+function Footer({ openPlaylist, clickPlay, isPlay, musicPlay }) {
+    console.log(musicPlay)
   return (
     <Box
       sx={{
@@ -30,33 +32,51 @@ function Footer({ openPlaylist }) {
             maxHeight: '40px'
           }}
         >
-          <IconButton aria-label="play music">
-            <PlayArrowSharpIcon color="primary" fontSize="large" />
-          </IconButton>
+            {
+                isPlay
+                    ? <IconButton aria-label="pause music" onClick={clickPlay}>
+                        <PauseCircleIcon color="primary" fontSize="large"/>
+                    </IconButton>
+                    : <IconButton aria-label="play music" onClick={clickPlay}>
+                        <PlayArrowSharpIcon color="primary" fontSize="large"/>
+                    </IconButton>
+            }
           <IconButton aria-label="next music">
             <SkipNextSharpIcon color="primary" fontSize="large" />
           </IconButton>
         </Box>
-
-        <Box
-          sx={{
-            marginLeft: 3,
-            display: "flex",
-            bgcolor: "#000000",
-          }}
-        >
-          {/* <img className="audio__img"></img> */}
-          <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            marginRight: 2
-          }}>
-            <Typography color="primary"> Грот</Typography>
-            <Typography color="primary">По пути домой</Typography>
-          </Box>
-        </Box>
+          {
+              musicPlay === undefined ?  null : <Box
+                  sx={{
+                      marginLeft: 3,
+                      display: "flex",
+                      bgcolor: "#000000",
+                  }}
+              >
+                  <CardMedia
+                      sx={{
+                          width: '50px',
+                          height: '50px',
+                          marginRight: 1
+                      }}
+                      component="img"
+                      image={musicPlay.img}
+                      alt="image"
+                  >
+                  </CardMedia>
+                  <Box
+                      sx={{
+                          display: 'flex',
+                          flexDirection: 'column',
+                          justifyContent: 'center',
+                          marginRight: 1,
+                          height: '50px'
+                      }}>
+                      <Typography color="primary">{musicPlay.title}</Typography>
+                      <Typography color="primary">{musicPlay.artistName}</Typography>
+                  </Box>
+              </Box>
+          }
       </Box>
       <Box
         sx={{
