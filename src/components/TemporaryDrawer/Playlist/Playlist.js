@@ -3,7 +3,7 @@ import * as React from "react";
 import {CardMedia, Typography} from "@mui/material";
 import FavoriteBorderSharpIcon from "@mui/icons-material/FavoriteBorderSharp";
 import FavoriteSharpIcon from "@mui/icons-material/FavoriteSharp";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {isLikes, playAudio} from "../../../redux/stateReducer";
 import PauseCircleIcon from "@mui/icons-material/PauseCircle";
 import PlayArrowSharpIcon from "@mui/icons-material/PlayArrowSharp";
@@ -11,11 +11,11 @@ import PlayArrowSharpIcon from "@mui/icons-material/PlayArrowSharp";
 
 function Playlist({props}) {
     const dispatch = useDispatch()
-    // const musicPlay = useSelector(state => state.data.activeButtonPlay)
-    // console.log(musicPlay)
+
     const onClickPlay = () => dispatch(playAudio(props.id))
     return (
-        <li className="playList__box">
+        <li className={"playList__box"}
+        >
             <Box
                 sx={{
                     display: "flex",

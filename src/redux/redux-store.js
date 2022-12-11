@@ -3,7 +3,7 @@ import stateReducer from "./stateReducer";
 
 export default configureStore({
     reducer: {
-        data: stateReducer
+        state: stateReducer
     },
 })
 

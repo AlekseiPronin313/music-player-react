@@ -14,7 +14,7 @@ function TemporaryDrawer({songs, isOpen}) {
         >
             <ul className="playList">
                 {songs.map((props) =>
-                    <Playlist key={props.id} props={props}/>
+                    <Playlist key={props.id} props={props} />
                 )}
             </ul>
         </Box>

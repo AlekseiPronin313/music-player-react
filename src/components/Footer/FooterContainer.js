@@ -7,12 +7,11 @@ import {useState} from "react";
 function FooterContainer() {
     const dispatch = useDispatch()
     const [isPlay, setIsPlay] = useState(false)
-
     const openPlaylist = () => {
         dispatch(isOpenPlaylist())
     }
 
-    const musicPlay = useSelector(state => state.data.playAudio)
+    const musicPlay = useSelector(state => state.state.playAudio)
     const clickPlay = () => {
         setIsPlay(!isPlay)
     }
