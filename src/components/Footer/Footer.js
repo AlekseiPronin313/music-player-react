@@ -1,9 +1,9 @@
 import * as React from "react";
 import AudioPlayers from "./AudioPlayers/AudioPlayers";
 
-function Footer({ openPlaylist, clickPlay, isPlay, musicPlay }) {
+function Footer({ openPlaylist, musicPlay }) {
   return (
-    <AudioPlayers openPlaylist={openPlaylist} clickPlay={clickPlay} isPlay={isPlay} musicPlay={musicPlay}/>
+    <AudioPlayers openPlaylist={openPlaylist} musicPlay={musicPlay}/>
   );
 }
 

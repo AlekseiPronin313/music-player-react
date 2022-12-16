@@ -3,7 +3,6 @@ import Box from "@mui/material/Box";
 import {CardMedia, Typography} from "@mui/material";
 
 function TrackInformation({musicPlay}) {
-    console.log(musicPlay)
     return (
         <>
             {

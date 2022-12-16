@@ -9,12 +9,12 @@ import PauseCircleIcon from "@mui/icons-material/PauseCircle";
 import PlayArrowSharpIcon from "@mui/icons-material/PlayArrowSharp";
 
 
-function Playlist({props}) {
+function Playlist({props, selectedTrack}) {
     const dispatch = useDispatch()
 
     const onClickPlay = () => dispatch(playAudio(props.id))
     return (
-        <li className={"playList__box"}
+        <li className={selectedTrack ? "playList__box selected"  : "playList__box "}
         >
             <Box
                 sx={{

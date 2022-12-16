@@ -13,7 +13,8 @@ const initialState = {
     songList: song_list.songs,
     isOpenPlaylist: false,
     audio: null,
-    playAudio: {}
+    playAudio: {},
+    selectedTrack: false
 }
 
 const stateReducer = (state = initialState, action) => {

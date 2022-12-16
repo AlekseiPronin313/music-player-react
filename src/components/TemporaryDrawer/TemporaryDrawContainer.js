@@ -9,6 +9,7 @@ function TemporaryDrawerContainer() {
 
     const songs = useSelector(state => state.state.songList)
     const isOpen = useSelector(state => state.state.isOpenPlaylist)
+    const selectedTrack = useSelector(state => state.state.selectedTrack)
 
     useEffect(() => {
         dispatch(setSongs())
@@ -16,7 +17,7 @@ function TemporaryDrawerContainer() {
 
     {
        if (songs) return (
-            <TemporaryDrawer songs={songs} isOpen={isOpen}/>
+            <TemporaryDrawer songs={songs} isOpen={isOpen} selectedTrack={selectedTrack}/>
         )
     }
 
