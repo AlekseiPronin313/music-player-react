@@ -9,8 +9,9 @@ function FooterContainer() {
         dispatch(isOpenPlaylist())
     }
     const musicPlay = useSelector(state => state.state.playAudio)
+    const playing = useSelector(state => state.state.playing)
   return (
-        <Footer openPlaylist={openPlaylist} musicPlay={musicPlay}/>
+        <Footer openPlaylist={openPlaylist} musicPlay={musicPlay} playing={playing}/>
   );
 }
 

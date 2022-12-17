@@ -8,9 +8,19 @@ import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import MenuIcon from "@mui/icons-material/Menu";
 import TrackInformation from "./TrackInformation/TrackInformation";
 import {VolumeDown, VolumeUp} from "@mui/icons-material";
+import {useDispatch} from "react-redux";
+import {nextTrack} from "../../../../redux/stateReducer";
 
 
-function PanelButtons ({ openPlaylist, togglePlayPause, isPlaying, musicPlay, handleVolume, statevolum}) {
+function PanelButtons ({ openPlaylist, togglePlayPause, isPlaying, musicPlay, handleVolume, statevolum, playing, setIsPlaying}) {
+
+    const dispatch = useDispatch()
+
+    const clickNextTrack = () => {
+        setIsPlaying(false)
+        dispatch(nextTrack(musicPlay.id))
+    }
+
     return (
         <Box
             sx={{
@@ -30,26 +40,27 @@ function PanelButtons ({ openPlaylist, togglePlayPause, isPlaying, musicPlay, ha
             >
                 <Box
                     sx={{
-                        bgcolor: "#000000",
+                        bgcolor: "#fff",
                         display: "flex",
                         maxHeight: '40px',
-                        margin: '5px 0'
+                        margin: '5px 0',
+                        borderRadius: '15px',
                     }}
                 >
                     <IconButton aria-label="previous music">
-                        <SkipPreviousIcon color="primary" fontSize="large" />
+                        <SkipPreviousIcon sx={{color: '#000'}} fontSize="large" />
                     </IconButton>
                     {
                         isPlaying
                             ? <IconButton aria-label="pause music" onClick={togglePlayPause}>
-                                <PauseCircleIcon color="primary" fontSize="large"/>
+                                <PauseCircleIcon sx={{color: '#000'}} fontSize="large"/>
                             </IconButton>
                             : <IconButton aria-label="play music" onClick={togglePlayPause}>
-                                <PlayArrowSharpIcon color="primary" fontSize="large"/>
+                                <PlayArrowSharpIcon sx={{color: '#000'}} fontSize="large"/>
                             </IconButton>
                     }
-                    <IconButton aria-label="next music">
-                        <SkipNextSharpIcon color="primary" fontSize="large" />
+                    <IconButton aria-label="next music" onClick={clickNextTrack}>
+                        <SkipNextSharpIcon sx={{color: '#000'}} fontSize="large" />
                     </IconButton>
                 </Box>
                 <TrackInformation musicPlay={musicPlay}/>

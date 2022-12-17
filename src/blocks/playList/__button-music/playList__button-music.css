@@ -1,16 +1,3 @@
 .playList__button-music {
     position: absolute;
 }
-
-.playList__button-pause {
-    opacity: 0;
-}
-
-.playList__button-pause:hover {
-    opacity: 1;
-}
-
-.playList__button-play {
-    opacity: 1;
-}
-

@@ -8,9 +8,12 @@ function TrackInformation({musicPlay}) {
             {
                 !Object.keys(musicPlay).length ? null : <Box
                     sx={{
+                        overflow: 'hidden',
+                        borderRadius: '15px',
                         marginLeft: 3,
                         display: "flex",
-                        bgcolor: "#000000",
+                        bgcolor: "#fff",
+                        padding: '0 7px'
                     }}
                 >
                     <CardMedia
@@ -32,8 +35,8 @@ function TrackInformation({musicPlay}) {
                             marginRight: 1,
                             height: '50px'
                         }}>
-                        <Typography color="primary">{musicPlay.title}</Typography>
-                        <Typography color="primary">{musicPlay.artistName}</Typography>
+                        <Typography sx={{color: '#000'}}>{musicPlay.title}</Typography>
+                        <Typography sx={{color: '#000'}}>{musicPlay.artistName}</Typography>
                     </Box>
                 </Box>
             }

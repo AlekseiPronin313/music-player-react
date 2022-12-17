@@ -4,7 +4,7 @@ const SET_SONGS = 'stateReducer/SET_SONGS'
 const IS_OPEN_PLAYLIST = 'stateReducer/IS_OPEN_PLAYLIST'
 const IS_LIKE = 'stateReducer/LIKE'
 const PLAY_AUDIO = 'stateReducer/PLAY_AUDIO'
-const SET_CURRENT_SONG = 'stateReducer/SET_CURRENT_SONG'
+const NEXT_TRACK = 'stateReducer/NEXT_TRACK'
 
 
 
@@ -12,9 +12,8 @@ const initialState = {
     currentSong: 0,
     songList: song_list.songs,
     isOpenPlaylist: false,
-    audio: null,
     playAudio: {},
-    selectedTrack: false
+    playing: false
 }
 
 const stateReducer = (state = initialState, action) => {
@@ -42,7 +41,14 @@ const stateReducer = (state = initialState, action) => {
         case PLAY_AUDIO:
             return {
                 ...state,
-                playAudio: state.songList.find(track => track.id === action.trackId)
+                playAudio: state.songList.find(track => track.id === action.trackId),
+                currentSong: action.trackId,
+                playing: true
+            }
+        case NEXT_TRACK:
+            return {
+                ...state,
+                currentSong: state.songList.find(track => track.id === action.trackId + 1)
             }
         default:
             return state
@@ -53,8 +59,7 @@ export const setSongs = () => ({type: SET_SONGS})
 export const isOpenPlaylist = () => ({type: IS_OPEN_PLAYLIST})
 export const isLikes = (trackId) => ({type: IS_LIKE, trackId})
 export const playAudio = (trackId) => ({type: PLAY_AUDIO, trackId})
-//
-// export const setCurrent = (trackId) => ({type: SET_CURRENT_SONG, trackId})
 
+export const nextTrack = (trackId) => ({ type: NEXT_TRACK, trackId })
 
 export default stateReducer

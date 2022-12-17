@@ -4,7 +4,7 @@ import {Box} from "@mui/system";
 import {Typography} from "@mui/material";
 import {calculateTime} from "../../../context/СalculateTime";
 
-function AudioPlayers ({ openPlaylist, musicPlay }) {
+function AudioPlayers ({ openPlaylist, musicPlay, playing }) {
     const [statevolum, setStateVolum] = useState(0.5)
     const [isPlaying, setIsPlaying] = useState(false);
     const [duration, setDuration] = useState(0);
@@ -81,7 +81,9 @@ function AudioPlayers ({ openPlaylist, musicPlay }) {
             <PanelButtons togglePlayPause={togglePlayPause}
                           openPlaylist={openPlaylist} statevolum={statevolum}
                           isPlaying={isPlaying}
-                          musicPlay={musicPlay} handleVolume={handleVolume}/>
+                          musicPlay={musicPlay} handleVolume={handleVolume}
+                          playing={playing} setIsPlaying={setIsPlaying}
+            />
         </Box>
     )
 }

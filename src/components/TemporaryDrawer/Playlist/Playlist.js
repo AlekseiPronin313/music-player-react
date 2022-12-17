@@ -10,7 +10,8 @@ import PlayArrowSharpIcon from "@mui/icons-material/PlayArrowSharp";
 import {useEffect, useRef, useState} from "react";
 import {calculateTime} from "../../../context/СalculateTime";
 
-function Playlist({props, selectedTrack}) {
+function Playlist({props, currentSong}) {
+    console.log(currentSong)
     const dispatch = useDispatch()
     const [duration, setDuration] = useState(0);
     const audioPlayer = useRef();
@@ -18,10 +19,9 @@ function Playlist({props, selectedTrack}) {
     useEffect(() => {
         setDuration(Math.floor(audioPlayer.current.duration))
     }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState])
-
     const onClickPlay = () => dispatch(playAudio(props.id))
     return (
-        <li className={selectedTrack ? "playList__box selected"  : "playList__box "}
+        <li className={"playList__box " + (currentSong === props.id ? "selected"  : "")}
         >
             <Box
                 sx={{
@@ -38,17 +38,17 @@ function Playlist({props, selectedTrack}) {
                     >
                     </CardMedia>
                     <Box className='playList__button-music'>
-                        {/*{*/}
-                        {/*    musicPlay*/}
-                        {/*        ? <IconButton className='playList__button-play' aria-label="pause music">*/}
-                        {/*            <PauseCircleIcon sx={{*/}
-                        {/*                color: "#d5d4d4"*/}
-                        {/*            }} fontSize="large"/>*/}
-                        {/*        </IconButton>*/}
-                        {/*        : <IconButton className='playList__button-pause' aria-label="play music">*/}
-                        {/*            <PlayArrowSharpIcon color="primary" fontSize="large"/>*/}
-                        {/*        </IconButton>*/}
-                        {/*}*/}
+                        {
+                            currentSong === props.id
+                                ? <IconButton className='playList__button-play' aria-label="pause music">
+                                    <PauseCircleIcon sx={{
+                                        color: "#d5d4d4"
+                                    }} fontSize="large"/>
+                                </IconButton>
+                                : <IconButton className='playList__button-pause' aria-label="play music">
+                                    <PlayArrowSharpIcon color="primary" fontSize="large"/>
+                                </IconButton>
+                        }
                     </Box>
                 </Box>
 
