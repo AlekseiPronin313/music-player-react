@@ -7,10 +7,17 @@ import {useDispatch} from "react-redux";
 import {isLikes, playAudio} from "../../../redux/stateReducer";
 import PauseCircleIcon from "@mui/icons-material/PauseCircle";
 import PlayArrowSharpIcon from "@mui/icons-material/PlayArrowSharp";
-
+import {useEffect, useRef, useState} from "react";
+import {calculateTime} from "../../../context/СalculateTime";
 
 function Playlist({props, selectedTrack}) {
     const dispatch = useDispatch()
+    const [duration, setDuration] = useState(0);
+    const audioPlayer = useRef();
+
+    useEffect(() => {
+        setDuration(Math.floor(audioPlayer.current.duration))
+    }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState])
 
     const onClickPlay = () => dispatch(playAudio(props.id))
     return (
@@ -85,7 +92,8 @@ function Playlist({props, selectedTrack}) {
                             />
                     }
                 </button>
-                <Typography color="primary">Время</Typography>
+                <audio src={props.fileUrl} ref={audioPlayer}></audio>
+                <Typography color="primary">{duration? calculateTime(duration) : null}</Typography>
             </Box>
         </li>
     )

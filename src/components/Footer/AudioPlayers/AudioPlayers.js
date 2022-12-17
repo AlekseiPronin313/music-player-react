@@ -2,9 +2,10 @@ import React, {useEffect, useRef, useState} from "react";
 import PanelButtons from "./PanelButtons/PanelButtons";
 import {Box} from "@mui/system";
 import {Typography} from "@mui/material";
+import {calculateTime} from "../../../context/СalculateTime";
 
 function AudioPlayers ({ openPlaylist, musicPlay }) {
-    const [statevolum, setStateVolum] = useState(0.3)
+    const [statevolum, setStateVolum] = useState(0.5)
     const [isPlaying, setIsPlaying] = useState(false);
     const [duration, setDuration] = useState(0);
     const [currentTime, setCurrentTime] = useState(0);
@@ -19,16 +20,9 @@ function AudioPlayers ({ openPlaylist, musicPlay }) {
         progressBar.current.max = seconds;
     }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState]);
 
-    const handleVolume = (q) => {
-        setStateVolum(q)
-        audioPlayer.current.volume = q
-    }
-    const calculateTime = (secs) => {
-        const minutes = Math.floor(secs / 60);
-        const returnedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
-        const seconds = Math.floor(secs % 60);
-        const returnedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
-        return `${returnedMinutes}:${returnedSeconds}`;
+    const handleVolume = (value) => {
+        setStateVolum(value)
+        audioPlayer.current.volume = value
     }
 
     const togglePlayPause = () => {
