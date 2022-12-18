@@ -1,3 +1,5 @@
+# [Ссылка на проект GitHub](https://alekseipronin313.github.io/music-player-react/)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
