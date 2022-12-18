@@ -4,7 +4,6 @@ import {IconButton, Slider, Stack} from "@mui/material";
 import PauseCircleIcon from "@mui/icons-material/PauseCircle";
 import PlayArrowSharpIcon from "@mui/icons-material/PlayArrowSharp";
 import SkipNextSharpIcon from "@mui/icons-material/SkipNextSharp";
-import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import MenuIcon from "@mui/icons-material/Menu";
 import TrackInformation from "./TrackInformation/TrackInformation";
 import {VolumeDown, VolumeUp} from "@mui/icons-material";
@@ -13,7 +12,6 @@ import {nextTrack} from "../../../../redux/stateReducer";
 
 
 function PanelButtons ({ openPlaylist, togglePlayPause, isPlaying, musicPlay, handleVolume, statevolum, playing, setIsPlaying}) {
-
     const dispatch = useDispatch()
 
     const clickNextTrack = () => {
@@ -47,9 +45,6 @@ function PanelButtons ({ openPlaylist, togglePlayPause, isPlaying, musicPlay, ha
                         borderRadius: '15px',
                     }}
                 >
-                    <IconButton aria-label="previous music">
-                        <SkipPreviousIcon sx={{color: '#000'}} fontSize="large" />
-                    </IconButton>
                     {
                         isPlaying
                             ? <IconButton aria-label="pause music" onClick={togglePlayPause}>

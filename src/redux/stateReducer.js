@@ -7,7 +7,6 @@ const PLAY_AUDIO = 'stateReducer/PLAY_AUDIO'
 const NEXT_TRACK = 'stateReducer/NEXT_TRACK'
 
 
-
 const initialState = {
     currentSong: 0,
     songList: song_list.songs,
@@ -48,7 +47,14 @@ const stateReducer = (state = initialState, action) => {
         case NEXT_TRACK:
             return {
                 ...state,
-                currentSong: state.songList.find(track => track.id === action.trackId + 1)
+                playAudio: state.songList.find(track => {
+                    if (Object.keys(state.songList).length === Number(action.trackId)) {
+                        return state.songList[0]
+                    } else {
+                        return (+track.id) === (+action.trackId + 1)
+                    }
+                }),
+                currentSong: Object.keys(state.songList).length > action.trackId ? +action.trackId + 1 : action.trackId = 1
             }
         default:
             return state

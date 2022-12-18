@@ -11,7 +11,6 @@ import {useEffect, useRef, useState} from "react";
 import {calculateTime} from "../../../context/СalculateTime";
 
 function Playlist({props, currentSong}) {
-    console.log(currentSong)
     const dispatch = useDispatch()
     const [duration, setDuration] = useState(0);
     const audioPlayer = useRef();
@@ -21,7 +20,7 @@ function Playlist({props, currentSong}) {
     }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState])
     const onClickPlay = () => dispatch(playAudio(props.id))
     return (
-        <li className={"playList__box " + (currentSong === props.id ? "selected"  : "")}
+        <li className={"playList__box " + (+currentSong === (+props.id) ? "selected"  : "")}
         >
             <Box
                 sx={{
@@ -39,7 +38,7 @@ function Playlist({props, currentSong}) {
                     </CardMedia>
                     <Box className='playList__button-music'>
                         {
-                            currentSong === props.id
+                            +currentSong === +props.id
                                 ? <IconButton className='playList__button-play' aria-label="pause music">
                                     <PauseCircleIcon sx={{
                                         color: "#d5d4d4"
