@@ -2,7 +2,7 @@
   "name": "music-player-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://alekseipronin313.github.io/music-player-react",
+  "homepage": "https://alekseipronin313.github.io/music-player-react/",
   "dependencies": {
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
