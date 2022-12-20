@@ -51,9 +51,7 @@ function PanelButtons({
                     alignItems: 'center'
                 }}
             >
-                {
-                    !Object.keys(musicPlay).length ? null
-                        : <Box
+                     <Box
                             sx={{
                                 bgcolor: "#fff",
                                 display: "flex",
@@ -61,26 +59,25 @@ function PanelButtons({
                                 margin: '5px 0',
                                 borderRadius: '15px',
                             }}
-                        >  {
-                            Number(musicPlay.id) === 1 ? null
-                                : <IconButton aria-label="previous music" onClick={clickPreviousTrack}>
-                                    <SkipPreviousIcon sx={{color: '#000'}} fontSize="large"/>
+                        >
+                                <IconButton variant="contained"
+                                            disabled={Number(musicPlay.id) === 1 || !Object.keys(musicPlay).length}
+                                            aria-label="previous song" onClick={clickPreviousTrack}>
+                                    <SkipPreviousIcon fontSize="large"/>
                                 </IconButton>
-                        }
-                            {
-                                isPlaying
-                                    ? <IconButton aria-label="pause music" onClick={togglePlayPause}>
-                                        <PauseCircleIcon sx={{color: '#000'}} fontSize="large"/>
-                                    </IconButton>
-                                    : <IconButton aria-label="play music" onClick={togglePlayPause}>
-                                        <PlayArrowSharpIcon sx={{color: '#000'}} fontSize="large"/>
-                                    </IconButton>
-                            }
-                            <IconButton aria-label="next music" onClick={clickNextTrack}>
-                                <SkipNextSharpIcon sx={{color: '#000'}} fontSize="large"/>
+                            <IconButton aria-label="pause music" variant="contained"
+                                        disabled={!Object.keys(musicPlay).length} onClick={togglePlayPause}>
+                                {
+                                    isPlaying ?
+                                        <PauseCircleIcon fontSize="large"/>
+                                        : <PlayArrowSharpIcon fontSize="large"/>
+                                }
+                            </IconButton>
+                            <IconButton aria-label="next music" disabled={!Object.keys(musicPlay).length}
+                                        variant="contained" onClick={clickNextTrack}>
+                                <SkipNextSharpIcon fontSize="large"/>
                             </IconButton>
                         </Box>
-                }
                 <TrackInformation musicPlay={musicPlay}/>
             </Box>
             <Box

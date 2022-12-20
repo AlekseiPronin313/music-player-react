@@ -10,6 +10,7 @@ import store from './redux/redux-store'
 const theme = createTheme({
   palette: {
     primary: {
+      button: '#000',
       light: '#757ce8',
       main: '#9e9e9e',
       dark: '#002884',
