@@ -18,7 +18,9 @@ function Playlist({props, currentSong}) {
     useEffect(() => {
         setDuration(Math.floor(audioPlayer.current.duration))
     }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState])
+
     const onClickPlay = () => dispatch(playAudio(props.id))
+
     return (
         <li className={"playList__box " + (+currentSong === (+props.id) ? "selected"  : "")}
         >
@@ -50,7 +52,6 @@ function Playlist({props, currentSong}) {
                         }
                     </Box>
                 </Box>
-
                 <Box
                     sx={{
                         display: "flex",

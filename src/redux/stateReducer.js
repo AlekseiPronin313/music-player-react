@@ -5,6 +5,7 @@ const IS_OPEN_PLAYLIST = 'stateReducer/IS_OPEN_PLAYLIST'
 const IS_LIKE = 'stateReducer/LIKE'
 const PLAY_AUDIO = 'stateReducer/PLAY_AUDIO'
 const NEXT_TRACK = 'stateReducer/NEXT_TRACK'
+const PREVIOUS_TRACK = 'stateReducer/PREVIOUS_TRACK'
 
 
 const initialState = {
@@ -56,6 +57,14 @@ const stateReducer = (state = initialState, action) => {
                 }),
                 currentSong: Object.keys(state.songList).length > action.trackId ? +action.trackId + 1 : action.trackId = 1
             }
+        case PREVIOUS_TRACK:
+            return {
+                ...state,
+                playAudio: state.songList.find(track => {
+                        return (+track.id) === (+action.trackId - 1)
+                }),
+                currentSong: 1 === action.trackId ? action.trackId : +action.trackId - 1
+            }
         default:
             return state
     }
@@ -65,7 +74,7 @@ export const setSongs = () => ({type: SET_SONGS})
 export const isOpenPlaylist = () => ({type: IS_OPEN_PLAYLIST})
 export const isLikes = (trackId) => ({type: IS_LIKE, trackId})
 export const playAudio = (trackId) => ({type: PLAY_AUDIO, trackId})
-
 export const nextTrack = (trackId) => ({ type: NEXT_TRACK, trackId })
+export const previousTrack = (trackId) => ({ type: PREVIOUS_TRACK, trackId })
 
 export default stateReducer

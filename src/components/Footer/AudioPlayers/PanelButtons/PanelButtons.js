@@ -4,19 +4,34 @@ import {IconButton, Slider, Stack} from "@mui/material";
 import PauseCircleIcon from "@mui/icons-material/PauseCircle";
 import PlayArrowSharpIcon from "@mui/icons-material/PlayArrowSharp";
 import SkipNextSharpIcon from "@mui/icons-material/SkipNextSharp";
+import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import MenuIcon from "@mui/icons-material/Menu";
 import TrackInformation from "./TrackInformation/TrackInformation";
 import {VolumeDown, VolumeUp} from "@mui/icons-material";
 import {useDispatch} from "react-redux";
-import {nextTrack} from "../../../../redux/stateReducer";
+import {nextTrack, previousTrack} from "../../../../redux/stateReducer";
 
 
-function PanelButtons ({ openPlaylist, togglePlayPause, isPlaying, musicPlay, handleVolume, statevolum, playing, setIsPlaying}) {
+function PanelButtons({
+                          openPlaylist,
+                          togglePlayPause,
+                          isPlaying,
+                          musicPlay,
+                          handleVolume,
+                          statevolum,
+                          playing,
+                          setIsPlaying
+                      }) {
     const dispatch = useDispatch()
 
     const clickNextTrack = () => {
         setIsPlaying(false)
         dispatch(nextTrack(musicPlay.id))
+    }
+
+    const clickPreviousTrack = () => {
+        setIsPlaying(false)
+        dispatch(previousTrack(musicPlay.id))
     }
 
     return (
@@ -36,28 +51,36 @@ function PanelButtons ({ openPlaylist, togglePlayPause, isPlaying, musicPlay, ha
                     alignItems: 'center'
                 }}
             >
-                <Box
-                    sx={{
-                        bgcolor: "#fff",
-                        display: "flex",
-                        maxHeight: '40px',
-                        margin: '5px 0',
-                        borderRadius: '15px',
-                    }}
-                >
-                    {
-                        isPlaying
-                            ? <IconButton aria-label="pause music" onClick={togglePlayPause}>
-                                <PauseCircleIcon sx={{color: '#000'}} fontSize="large"/>
+                {
+                    !Object.keys(musicPlay).length ? null
+                        : <Box
+                            sx={{
+                                bgcolor: "#fff",
+                                display: "flex",
+                                maxHeight: '40px',
+                                margin: '5px 0',
+                                borderRadius: '15px',
+                            }}
+                        >  {
+                            Number(musicPlay.id) === 1 ? null
+                                : <IconButton aria-label="previous music" onClick={clickPreviousTrack}>
+                                    <SkipPreviousIcon sx={{color: '#000'}} fontSize="large"/>
+                                </IconButton>
+                        }
+                            {
+                                isPlaying
+                                    ? <IconButton aria-label="pause music" onClick={togglePlayPause}>
+                                        <PauseCircleIcon sx={{color: '#000'}} fontSize="large"/>
+                                    </IconButton>
+                                    : <IconButton aria-label="play music" onClick={togglePlayPause}>
+                                        <PlayArrowSharpIcon sx={{color: '#000'}} fontSize="large"/>
+                                    </IconButton>
+                            }
+                            <IconButton aria-label="next music" onClick={clickNextTrack}>
+                                <SkipNextSharpIcon sx={{color: '#000'}} fontSize="large"/>
                             </IconButton>
-                            : <IconButton aria-label="play music" onClick={togglePlayPause}>
-                                <PlayArrowSharpIcon sx={{color: '#000'}} fontSize="large"/>
-                            </IconButton>
-                    }
-                    <IconButton aria-label="next music" onClick={clickNextTrack}>
-                        <SkipNextSharpIcon sx={{color: '#000'}} fontSize="large" />
-                    </IconButton>
-                </Box>
+                        </Box>
+                }
                 <TrackInformation musicPlay={musicPlay}/>
             </Box>
             <Box
@@ -68,18 +91,19 @@ function PanelButtons ({ openPlaylist, togglePlayPause, isPlaying, musicPlay, ha
                     marginRight: 3,
                 }}
             >
-                <Box sx={{ width: 200,
+                <Box sx={{
+                    width: 200,
                     marginRight: '10px',
                     bgcolor: '#fff',
                     padding: '0 5px',
                     borderRadius: '10px'
                 }}>
                     <Stack spacing={3} direction="row" alignItems="center">
-                        <VolumeDown />
+                        <VolumeDown/>
                         <Slider aria-label="Volume"
                                 value={Math.round(statevolum * 100)}
-                                onChange={(e) => handleVolume(e.target.value / 100)} />
-                        <VolumeUp />
+                                onChange={(e) => handleVolume(e.target.value / 100)}/>
+                        <VolumeUp/>
                     </Stack>
                 </Box>
                 <Box sx={{
@@ -90,7 +114,7 @@ function PanelButtons ({ openPlaylist, togglePlayPause, isPlaying, musicPlay, ha
                         sx={{color: '#000'}}
                         aria-label="open drawer"
                         onClick={openPlaylist}>
-                        <MenuIcon />
+                        <MenuIcon/>
                     </IconButton>
                 </Box>
             </Box>
