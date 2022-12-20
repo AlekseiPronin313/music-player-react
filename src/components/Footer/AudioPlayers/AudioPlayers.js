@@ -19,7 +19,6 @@ function AudioPlayers ({ openPlaylist, musicPlay, playing }) {
     const animationRef = useRef();
     const dispatch = useDispatch()
 
-
     useEffect(() => {
         const seconds = Math.floor(audioPlayer.current.duration);
         setDuration(seconds);
@@ -33,6 +32,7 @@ function AudioPlayers ({ openPlaylist, musicPlay, playing }) {
                 setIsPlaying(true)
             }, 1000)
             togglePlayPause(true)
+            setInterval(time, 1000)
         }
     },[track])
 
@@ -40,6 +40,13 @@ function AudioPlayers ({ openPlaylist, musicPlay, playing }) {
         setIsPlaying(false)
         dispatch(nextTrack(musicPlay.id))
     }
+
+    const time = () => {
+        if (Math.floor(audioPlayer.current.duration) === Math.floor(audioPlayer.current.currentTime)) {
+            clickNextTrack()
+        }
+    }
+
     const handleVolume = (value) => {
         setStateVolum(value)
         audioPlayer.current.volume = value
@@ -70,9 +77,6 @@ function AudioPlayers ({ openPlaylist, musicPlay, playing }) {
     const changePlayerCurrentTime = () => {
         progressBar.current.style.setProperty('--seek-before-width', `${progressBar.current.value / duration * 100}%`)
         setCurrentTime(progressBar.current.value);
-        if (Math.floor(audioPlayer.current.duration) === Math.floor(audioPlayer.current.currentTime)) {
-            clickNextTrack()
-        }
     }
 
     return (
