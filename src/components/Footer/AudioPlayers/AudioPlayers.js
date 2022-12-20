@@ -14,12 +14,19 @@ function AudioPlayers ({ openPlaylist, musicPlay, playing }) {
     const progressBar = useRef();
     const animationRef = useRef();
 
+    const track = musicPlay.fileUrl
+
     useEffect(() => {
         const seconds = Math.floor(audioPlayer.current.duration);
         setDuration(seconds);
         progressBar.current.max = seconds;
     }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState]);
 
+    useEffect(() => {
+        if (track) {
+            togglePlayPause(true)
+        }
+    },[track])
     const handleVolume = (value) => {
         setStateVolum(value)
         audioPlayer.current.volume = value
@@ -68,14 +75,14 @@ function AudioPlayers ({ openPlaylist, musicPlay, playing }) {
                 justifyContent: 'center',
                 alignItems: 'center'
             }}>
-                <Typography>{calculateTime(currentTime)}</Typography>
+                <Typography>{duration? calculateTime(currentTime) : null}</Typography>
                 <input className={'audio__input'} type={"range"} defaultValue="0"
                        ref={progressBar} onChange={changeRange}/>
-                <Typography>{duration? calculateTime(duration) : "00:00"}</Typography>
+                <Typography>{duration? calculateTime(duration) : null}</Typography>
             </Box>
             <audio className={'audio__player'}
                    ref={audioPlayer}
-                   src={musicPlay.fileUrl}
+                   src={track}
                    preload="metadata"></audio>
 
             <PanelButtons togglePlayPause={togglePlayPause}
