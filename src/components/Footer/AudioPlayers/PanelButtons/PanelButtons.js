@@ -9,7 +9,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import TrackInformation from "./TrackInformation/TrackInformation";
 import {VolumeDown, VolumeUp} from "@mui/icons-material";
 import {useDispatch} from "react-redux";
-import {nextTrack, previousTrack} from "../../../../redux/stateReducer";
+import { previousTrack} from "../../../../redux/stateReducer";
 
 
 function PanelButtons({
@@ -20,14 +20,10 @@ function PanelButtons({
                           handleVolume,
                           statevolum,
                           playing,
-                          setIsPlaying
+                          setIsPlaying,
+                          clickNextTrack
                       }) {
     const dispatch = useDispatch()
-
-    const clickNextTrack = () => {
-        setIsPlaying(false)
-        dispatch(nextTrack(musicPlay.id))
-    }
 
     const clickPreviousTrack = () => {
         setIsPlaying(false)

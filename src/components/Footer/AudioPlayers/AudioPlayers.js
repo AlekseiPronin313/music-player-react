@@ -3,6 +3,8 @@ import PanelButtons from "./PanelButtons/PanelButtons";
 import {Box} from "@mui/system";
 import {Typography} from "@mui/material";
 import {calculateTime} from "../../../context/СalculateTime";
+import {nextTrack} from "../../../redux/stateReducer";
+import {useDispatch} from "react-redux";
 
 function AudioPlayers ({ openPlaylist, musicPlay, playing }) {
     const [statevolum, setStateVolum] = useState(0.5)
@@ -13,6 +15,7 @@ function AudioPlayers ({ openPlaylist, musicPlay, playing }) {
     const audioPlayer = useRef();
     const progressBar = useRef();
     const animationRef = useRef();
+    const dispatch = useDispatch()
 
     const track = musicPlay.fileUrl
 
@@ -27,6 +30,10 @@ function AudioPlayers ({ openPlaylist, musicPlay, playing }) {
             togglePlayPause(true)
         }
     },[track])
+    const clickNextTrack = () => {
+        dispatch(nextTrack(musicPlay.id))
+        setIsPlaying(false)
+    }
     const handleVolume = (value) => {
         setStateVolum(value)
         audioPlayer.current.volume = value
@@ -58,6 +65,9 @@ function AudioPlayers ({ openPlaylist, musicPlay, playing }) {
     const changePlayerCurrentTime = () => {
         progressBar.current.style.setProperty('--seek-before-width', `${progressBar.current.value / duration * 100}%`)
         setCurrentTime(progressBar.current.value);
+        if (Math.floor(audioPlayer.current.duration) === Math.floor(audioPlayer.current.currentTime)) {
+            clickNextTrack()
+        }
     }
 
     return (
@@ -87,7 +97,7 @@ function AudioPlayers ({ openPlaylist, musicPlay, playing }) {
 
             <PanelButtons togglePlayPause={togglePlayPause}
                           openPlaylist={openPlaylist} statevolum={statevolum}
-                          isPlaying={isPlaying}
+                          isPlaying={isPlaying} clickNextTrack={clickNextTrack}
                           musicPlay={musicPlay} handleVolume={handleVolume}
                           playing={playing} setIsPlaying={setIsPlaying}
             />
