@@ -13,8 +13,8 @@ const VisualizationOfSound = ({audioRef, setContext}) => {
 
         const analyser = context.createAnalyser()
         const ctx = canvas.getContext("2d")
-        let audioSrc = context.createMediaElementSource(audio)
         audio.crossOrigin = "anonymous"
+        let audioSrc = context.createMediaElementSource(audio)
         audioSrc.connect(analyser)
         audioSrc.connect(context.destination)
         analyser.connect(context.destination)
