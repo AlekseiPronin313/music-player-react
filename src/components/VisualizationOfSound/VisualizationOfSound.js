@@ -10,14 +10,15 @@ const VisualizationOfSound = ({audioRef, setContext}) => {
 
         const audio = audioRef.current
         const canvas = canvasRef.current
+
         const analyser = context.createAnalyser()
         const ctx = canvas.getContext("2d")
-        audio.crossOrigin = "anonymous"
         let audioSrc = context.createMediaElementSource(audio)
+        audio.crossOrigin = "anonymous"
         audioSrc.connect(analyser)
         audioSrc.connect(context.destination)
         analyser.connect(context.destination)
-        //config canvas
+
         canvas.width = window.innerWidth
         canvas.height = window.innerHeight
         analyser.fftSize = 256;

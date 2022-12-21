@@ -14,12 +14,14 @@ function AudioPlayers ({ openPlaylist, musicPlay, playing, setAudioRef, context}
 
     const track = musicPlay.fileUrl
 
+
     const audioPlayer = useRef();
     const progressBar = useRef();
     const animationRef = useRef();
     const dispatch = useDispatch()
 
     useEffect(() => {
+        setIsPlaying(true)
         const seconds = Math.floor(audioPlayer.current.duration);
         setDuration(seconds);
         progressBar.current.max = seconds;
@@ -27,17 +29,19 @@ function AudioPlayers ({ openPlaylist, musicPlay, playing, setAudioRef, context}
 
     useEffect(() => {
         if (track) {
-            setIsPlaying(true)
+            setIsPlaying(false)
             audioPlayer.current.play()
-            setAudioRef(audioPlayer)
             animationRef.current = requestAnimationFrame(whilePlaying)
+            setAudioRef(audioPlayer)
         }
     },[track])
 
     const clickNextTrack = () => {
         dispatch(nextTrack(musicPlay.id))
-        setIsPlaying(true)
-        audioPlayer.current.play()
+        if (isPlaying === true) {
+            audioPlayer.current.play()
+        }
+        setIsPlaying(false)
     }
 
     const handleVolume = (value) => {
@@ -48,7 +52,6 @@ function AudioPlayers ({ openPlaylist, musicPlay, playing, setAudioRef, context}
     const togglePlayPause = () => {
         setIsPlaying(!isPlaying);
         if (!isPlaying) {
-            setIsPlaying(true)
             context.resume()
             audioPlayer.current.play();
             animationRef.current = requestAnimationFrame(whilePlaying)
