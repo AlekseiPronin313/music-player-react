@@ -3,7 +3,7 @@ import Footer from "./Footer";
 import {useDispatch, useSelector} from "react-redux";
 import {isOpenPlaylist} from "../../redux/stateReducer";
 
-function FooterContainer() {
+function FooterContainer({setAudioRef,context}) {
     const dispatch = useDispatch()
     const openPlaylist = () => {
         dispatch(isOpenPlaylist())
@@ -11,7 +11,8 @@ function FooterContainer() {
     const musicPlay = useSelector(state => state.state.playAudio)
     const playing = useSelector(state => state.state.playing)
   return (
-        <Footer openPlaylist={openPlaylist} musicPlay={musicPlay} playing={playing}/>
+        <Footer openPlaylist={openPlaylist} musicPlay={musicPlay}
+                setAudioRef={setAudioRef} context= {context} playing={playing}/>
   );
 }
 

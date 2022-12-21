@@ -9,4 +9,6 @@
 @import url(./blocks/playList/__button/playList__button.css);
 @import url(./blocks/playList/__button-music/playList__button-music.css);
 @import url(./blocks/playList/__music-box/playList__music-box.css);
-@import url(blocks/footer/__input/audio__input.css);
+@import url(./blocks/footer/__input/audio__input.css);
+@import url(./blocks/canvas/canvas.css);
+@import url(./blocks/canvas/myCanvas/myCanvas.css);

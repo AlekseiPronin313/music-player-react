@@ -6,7 +6,7 @@ import {calculateTime} from "../../../context/СalculateTime";
 import {nextTrack} from "../../../redux/stateReducer";
 import {useDispatch} from "react-redux";
 
-function AudioPlayers ({ openPlaylist, musicPlay, playing }) {
+function AudioPlayers ({ openPlaylist, musicPlay, playing, setAudioRef, context}) {
     const [statevolum, setStateVolum] = useState(0.5)
     const [isPlaying, setIsPlaying] = useState(false);
     const [duration, setDuration] = useState(0);
@@ -27,24 +27,17 @@ function AudioPlayers ({ openPlaylist, musicPlay, playing }) {
 
     useEffect(() => {
         if (track) {
-            setTimeout(() => {
-                audioPlayer.current.play()
-                setIsPlaying(true)
-            }, 1000)
-            togglePlayPause(true)
-            setInterval(time, 1000)
+            setIsPlaying(true)
+            audioPlayer.current.play()
+            setAudioRef(audioPlayer)
+            animationRef.current = requestAnimationFrame(whilePlaying)
         }
     },[track])
 
     const clickNextTrack = () => {
-        setIsPlaying(false)
         dispatch(nextTrack(musicPlay.id))
-    }
-
-    const time = () => {
-        if (Math.floor(audioPlayer.current.duration) === Math.floor(audioPlayer.current.currentTime)) {
-            clickNextTrack()
-        }
+        setIsPlaying(true)
+        audioPlayer.current.play()
     }
 
     const handleVolume = (value) => {
@@ -55,9 +48,12 @@ function AudioPlayers ({ openPlaylist, musicPlay, playing }) {
     const togglePlayPause = () => {
         setIsPlaying(!isPlaying);
         if (!isPlaying) {
+            setIsPlaying(true)
+            context.resume()
             audioPlayer.current.play();
             animationRef.current = requestAnimationFrame(whilePlaying)
         } else {
+            context.suspend()
             audioPlayer.current.pause();
             cancelAnimationFrame(animationRef.current);
         }
@@ -77,6 +73,9 @@ function AudioPlayers ({ openPlaylist, musicPlay, playing }) {
     const changePlayerCurrentTime = () => {
         progressBar.current.style.setProperty('--seek-before-width', `${progressBar.current.value / duration * 100}%`)
         setCurrentTime(progressBar.current.value);
+        if (Math.floor(audioPlayer.current.duration) === Math.floor(audioPlayer.current.currentTime)) {
+            clickNextTrack()
+        }
     }
 
     return (

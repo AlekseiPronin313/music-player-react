@@ -1,10 +1,10 @@
-import { Container, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import * as React from "react";
 import TemporaryDrawerContainer from "./TemporaryDrawer/TemporaryDrawContainer";
+import VisualizationOfSound from "./VisualizationOfSound/VisualizationOfSound";
 
 
-function Main() {
+function Main({audioRef, setContext}) {
   return (
     <Box
       sx={{
@@ -12,12 +12,10 @@ function Main() {
         bgcolor: "#fafafa",
         display: "flex",
         textAlign: 'center',
-        alignItems: "center",
+        alignItems: "flex-end",
       }}
     >
-      <Container>
-        <Typography variant="h3">Эквалайзер</Typography>
-      </Container>
+      <VisualizationOfSound audioRef={audioRef} setContext={setContext}/>
       <TemporaryDrawerContainer/>
     </Box>
   );
