@@ -13,7 +13,6 @@ const VisualizationOfSound = ({audioRef, setContext}) => {
 
         const analyser = context.createAnalyser()
         const ctx = canvas.getContext("2d")
-        audio.crossOrigin = "anonymous"
         let audioSrc = context.createMediaElementSource(audio)
         audioSrc.connect(analyser)
         audioSrc.connect(context.destination)
@@ -31,7 +30,6 @@ const VisualizationOfSound = ({audioRef, setContext}) => {
         let barHeight = null
         let x = null;
 
-        //core logic for the visualizer
         const timeouts = [];
         const renderFrame = () => {
             ctx.fillStyle = "rgba(0,0,0,0)";
@@ -70,7 +68,6 @@ const VisualizationOfSound = ({audioRef, setContext}) => {
     useEffect(() => {
         if (audioRef) audioVisualizerLogic()
     }, [ audioRef ])
-
     return (
         <Box className={'canvas'}>
             <canvas ref={canvasRef} className={'myCanvas'}></canvas>

@@ -102,6 +102,7 @@ function AudioPlayers ({ openPlaylist, musicPlay, playing, setAudioRef, context}
                 <Typography>{duration? calculateTime(duration) : null}</Typography>
             </Box>
             <audio className={'audio__player'}
+                   crossOrigin={"anonymous"}
                    ref={audioPlayer}
                    src={track}
                    preload="metadata"></audio>
