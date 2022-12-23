@@ -1,16 +1,21 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import {CardMedia, Typography} from "@mui/material";
+import {useSelector} from "react-redux";
 
-function TrackInformation({musicPlay}) {
+function TrackInformation() {
+    const musicPlay = useSelector(state => state.state.playAudio)
     return (
         <>
             {
-                !Object.keys(musicPlay).length ? null : <Box
+                !Object.keys(musicPlay).length
+                    ? <Typography variant="h4" color="secondary">
+                        Музыка
+                    </Typography>
+                    : <Box
                     sx={{
                         overflow: 'hidden',
                         borderRadius: '15px',
-                        marginLeft: 3,
                         display: "flex",
                         bgcolor: "#fff",
                         padding: '0 7px'
@@ -35,8 +40,8 @@ function TrackInformation({musicPlay}) {
                             marginRight: 1,
                             height: '50px'
                         }}>
-                        <Typography sx={{color: '#000'}}>{musicPlay.title}</Typography>
-                        <Typography sx={{color: '#000'}}>{musicPlay.artistName}</Typography>
+                        <Typography className={'footer__text'}>{musicPlay.title}</Typography>
+                        <Typography className={'footer__text'}>{musicPlay.artistName}</Typography>
                     </Box>
                 </Box>
             }

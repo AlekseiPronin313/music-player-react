@@ -1,0 +1,15 @@
+@media screen and (min-width: 320px) and (max-width: 470px) {
+    .footer__buttons-box {
+        margin: 0 !important;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 470px) {
+    .footer__button-box {
+        width: 100%;
+        padding: 0 10px;
+        margin: 0 !important;
+        justify-content: space-between;
+    }
+}
+

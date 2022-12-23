@@ -82,9 +82,8 @@ function AudioPlayers ({ openPlaylist, musicPlay, playing, setAudioRef, context}
     }
 
     return (
-        <Box sx={{
+        <Box className={'footer'} sx={{
             bgcolor: "#9e9e9e",
-            height: '100px',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center'
@@ -96,10 +95,10 @@ function AudioPlayers ({ openPlaylist, musicPlay, playing, setAudioRef, context}
                 justifyContent: 'center',
                 alignItems: 'center'
             }}>
-                <Typography>{duration? calculateTime(currentTime) : null}</Typography>
+                <Typography sx={{marginLeft: '3px'}}>{duration? calculateTime(currentTime) : null}</Typography>
                 <input className={'audio__input'} type={"range"} defaultValue="0"
                        ref={progressBar} onChange={changeRange}/>
-                <Typography>{duration? calculateTime(duration) : null}</Typography>
+                <Typography sx={{marginRight: '3px'}}>{duration? calculateTime(duration) : null}</Typography>
             </Box>
             <audio className={'audio__player'}
                    crossOrigin={"anonymous"}

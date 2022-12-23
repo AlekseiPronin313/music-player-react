@@ -6,7 +6,6 @@ import PlayArrowSharpIcon from "@mui/icons-material/PlayArrowSharp";
 import SkipNextSharpIcon from "@mui/icons-material/SkipNextSharp";
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import MenuIcon from "@mui/icons-material/Menu";
-import TrackInformation from "./TrackInformation/TrackInformation";
 import {VolumeDown, VolumeUp} from "@mui/icons-material";
 import {useDispatch} from "react-redux";
 import { previousTrack} from "../../../../redux/stateReducer";
@@ -31,7 +30,7 @@ function PanelButtons({
     }
 
     return (
-        <Box
+        <Box className={'footer__panel-buttons'}
             sx={{
                 width: '100%',
                 display: "flex",
@@ -40,7 +39,7 @@ function PanelButtons({
                 bgcolor: "#9e9e9e",
             }}
         >
-            <Box
+            <Box className={'footer__buttons-box'}
                 sx={{
                     display: "flex",
                     marginLeft: 3,
@@ -74,9 +73,8 @@ function PanelButtons({
                                 <SkipNextSharpIcon fontSize="large"/>
                             </IconButton>
                         </Box>
-                <TrackInformation musicPlay={musicPlay}/>
             </Box>
-            <Box
+            <Box className={'footer__button-box'}
                 sx={{
                     display: 'flex',
                     alignItems: 'center',
@@ -91,7 +89,7 @@ function PanelButtons({
                     padding: '0 5px',
                     borderRadius: '10px'
                 }}>
-                    <Stack spacing={3} direction="row" alignItems="center">
+                    <Stack sx={{height: 30}} spacing={2} direction="row" alignItems="center">
                         <VolumeDown/>
                         <Slider aria-label="Volume"
                                 value={Math.round(statevolum * 100)}

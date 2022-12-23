@@ -1,38 +1,35 @@
-.playList__artistName {
-    height: 22px;
-    width: 100%;
-    color: rgb(161, 159, 159);
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-}
-
 @media screen and (min-width: 320px) and (max-width: 1245px) {
-    .playList__artistName {
+    .playList__name-box {
         width: 375px;
     }
 }
 
 @media screen and (min-width: 320px) and (max-width: 840px) {
-    .playList__artistName {
+    .playList__name-box {
+        width: 300px;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 635px) {
+    .playList__name-box {
         width: 250px;
     }
 }
 
 @media screen and (min-width: 320px) and (max-width: 555px) {
-    .playList__artistName {
+    .playList__name-box {
         width: 200px;
     }
 }
 
 @media screen and (min-width: 320px) and (max-width: 465px) {
-    .playList__artistName {
+    .playList__name-box {
         width: 150px;
     }
 }
 
 @media screen and (min-width: 320px) and (max-width: 370px) {
-    .playList__artistName {
-        width: 120px;
+    .playList__name-box {
+        width: 115px;
     }
 }

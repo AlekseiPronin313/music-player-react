@@ -1,3 +1,45 @@
 .playList__title {
+    height: 22px;
+    width: 100%;
     color: #fffdfd;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-bottom: 3px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 1245px) {
+    .playList__title {
+        width: 375px
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 840px) {
+    .playList__title {
+        width: 300px
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 635px) {
+    .playList__title {
+        width: 250px
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 555px) {
+    .playList__title {
+        width: 200px
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 465px) {
+    .playList__title {
+        width: 150px
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 370px) {
+    .playList__title {
+        width: 120px
+    }
 }

@@ -7,7 +7,6 @@ function TemporaryDrawer({songs, isOpen, currentSong}) {
         <Box
             className={`popup ${isOpen && "popup__opened"}`}
             sx={{
-                height: "calc(100vh - 200px)",
                 bgcolor: "#5e5a5a",
                 overflow: "auto",
             }}

@@ -12,3 +12,8 @@
 @import url(./blocks/footer/__input/audio__input.css);
 @import url(./blocks/canvas/canvas.css);
 @import url(./blocks/canvas/myCanvas/myCanvas.css);
+@import url(./blocks/playList/__name-box/playList__name-box.css);
+@import url(./blocks/footer/__text/footer__text.css);
+@import url(./blocks/footer/__panel-buttons/footer__panel-buttons.css);
+@import url(./blocks/footer/footer.css);
+@import url(./blocks/footer/__buttons-box/footer__buttons-box.css);

@@ -52,12 +52,11 @@ function Playlist({props, currentSong}) {
                         }
                     </Box>
                 </Box>
-                <Box
+                <Box className='playList__name-box'
                     sx={{
                         display: "flex",
                         flexDirection: "column",
                         textAlign: "left",
-                        width: "100%",
                     }}
                 >
                     <span className="playList__title">{props.title}</span>

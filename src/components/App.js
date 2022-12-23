@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Header from './Header';
+import Header from './Header/Header';
 import Main from './Main';
 import { Box, CssBaseline } from '@mui/material';
 import FooterContainer from "./Footer/FooterContainer";

@@ -8,7 +8,6 @@ function Main({audioRef, setContext}) {
   return (
     <Box
       sx={{
-        minHeight: 'calc(100vh - 200px)',
         bgcolor: "#fafafa",
         display: "flex",
         textAlign: 'center',

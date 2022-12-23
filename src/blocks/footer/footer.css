@@ -1,0 +1,9 @@
+.footer {
+    height: 100px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 470px) {
+    .footer {
+        height: 128px;
+    }
+}
