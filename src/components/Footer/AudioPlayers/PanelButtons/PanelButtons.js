@@ -91,9 +91,9 @@ function PanelButtons({
                 }}>
                     <Stack sx={{height: 30}} spacing={2} direction="row" alignItems="center">
                         <VolumeDown/>
-                        <Slider aria-label="Volume"
-                                value={Math.round(statevolum * 100)}
-                                onChange={(e) => handleVolume(e.target.value / 100)}/>
+                            <Slider aria-label="Volume" valueLabelDisplay="auto"
+                                    value={Math.round(statevolum * 100)}
+                                    onChange={(e) => handleVolume(e.target.value / 100)}/>
                         <VolumeUp/>
                     </Stack>
                 </Box>
