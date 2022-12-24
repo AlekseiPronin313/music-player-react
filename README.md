@@ -1,6 +1,6 @@
 # Music player
 
-# [Link to player](https://alekseipronin313.github.io/music-player-react/)
+## [Link to player](https://alekseipronin313.github.io/music-player-react/)
 
 ## My educational project is designed to develop my skills.
 
