@@ -5,7 +5,7 @@
 ## My educational project is designed to develop my skills.
 
 ### It uses technologies:
-#### To react.
+#### React.
 #### React redux.
 #### Material UI.
 #### BEM.
