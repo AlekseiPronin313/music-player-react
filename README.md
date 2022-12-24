@@ -5,11 +5,11 @@
 ## My educational project is designed to develop my skills.
 
 ### It uses technologies:
-**To react
-**React redux
-**Material UI
-**BEM
-**Adaptive layout
+#### To react.
+#### React redux.
+#### Material UI.
+#### BEM.
+#### Adaptive layout.
 
 ### `npm start`
 
